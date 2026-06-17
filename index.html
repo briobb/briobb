@@ -344,6 +344,55 @@
       border: 1px solid #ffd8d0;
     }
 
+
+    #menu2 {
+  background: #fff7f3;
+}
+
+#menu2 .section-title {
+  color: #b71922;
+}
+
+#menu2 .section-lead {
+  color: #6f4c4c;
+}
+
+.menu2-card {
+  background: #fff;
+  border: 1px solid #f0c8c0;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(120, 20, 20, 0.07);
+}
+
+.menu2-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.menu2-card-body {
+  padding: 22px;
+}
+
+.menu2-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #b71922;
+}
+
+.menu2-card p {
+  color: #2b1b1b;
+}
+
+.menu2-price {
+  display: block;
+  margin-top: 12px;
+  font-weight: 900;
+  color: #b71922;
+}
+
+
     .flow {
       counter-reset: step;
       display: grid;
@@ -527,6 +576,8 @@
 .reserve-section .section-lead {
   color: #ffe2dc;
 }
+
+
   </style>
 </head>
 
@@ -546,8 +597,9 @@
       <ul>
         <li><a href="#top">トップ</a></li>
         <li><a href="#menu">こだわり</a></li>
-        <li><a href="#gallery">ギャラリー</a></li>
+        <li><a href="#menu2">MENU</a></li>
         <li><a href="#reserve">ご予約</a></li>
+        <li><a href="#gallery">ギャラリー</a></li>
         <li><a href="#info">アクセス</a></li>
         <li><a href="#link">LINK</a></li>
       </ul>
@@ -565,8 +617,9 @@
 
   <a href="#top" onclick="closeMenu()">トップ</a>
   <a href="#menu" onclick="closeMenu()">こだわり</a>
-  <a href="#gallery" onclick="closeMenu()">ギャラリー</a>
+  <a href="#menu2" onclick="closeMenu()">MENU</a>
   <a href="#reserve" onclick="closeMenu()">ご予約</a>
+  <a href="#gallery" onclick="closeMenu()">ギャラリー</a>
   <a href="#info" onclick="closeMenu()">アクセス</a>
   <a href="#link" onclick="closeMenu()">LINK</a>
 </aside>
@@ -597,7 +650,7 @@
   <section id="menu" class="cta">
     <div class="container">
       <h2 class="section-title">当店のこだわり</h2>
-      <p class="section-lead">BRIOらしさを詰め込んだクラフトバーガー。</p>
+      
 
       <div class="cards">
         <div class="card">
@@ -619,9 +672,64 @@
           <div class="gallery-item">
         <img src="images/photo16.jpg" alt="BRIO ギャラリー写真2">
       </div>
-          <p>何度でも食べたくなる。<br>特製ミートソース。</p>
+          <p>何度でも食べたくなる、<br>特製ミートソース。</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="menu2">
+  <div class="container">
+    <h2 class="section-title">MENU</h2>
+    <p class="section-lead">人気のメニューを紹介します</p>
+
+    <div class="cards">
+      <div class="menu2-card">
+        <img src="images/photo20.jpg" alt="Brio Burger">
+        <div class="menu2-card-body">
+          <h3>RUSH HOUR</h3>
+          <p>その一口でチーズのラッシュが押し寄せる</p>
+          <span class="menu2-price">¥1900</span>
+        </div>
+      </div>
+
+      <div class="menu2-card">
+        <img src="images/photo17.jpg" alt="The Cheese">
+        <div class="menu2-card-body">
+          <h3>KING SLAB</h3>
+          <p>その一枚、王者の風格。</p>
+          <span class="menu2-price">¥1900</span>
+        </div>
+      </div>
+
+      <div class="menu2-card">
+        <img src="images/photo18.jpg" alt="All Star">
+        <div class="menu2-card-body">
+          <h3>玉響</h3>
+          <p>5,6月限定！<br>甘く香ばしい玉ねぎの調べ。</p>
+          <span class="menu2-price">¥1900</span>
+        </div>
+
+        
+      </div>
+      <center>価格は税込です。<br>
+      ポテト＆ドリンクのセット価格です。</center>
+    </div>
+  </div>
+</section>
+
+
+
+  <section id="reserve" class="reserve-section">
+    <div class="container">
+      <h2 class="section-title">ご予約</h2>
+      <p class="section-lead">下記ボタンより予約ページへお進みください</p>
+
+  
+    
+          <a class="btn2" href="https://airrsv.net/briobb/calendar" target="_blank">予約はこちら</a>
+       
+
     </div>
   </section>
 
@@ -659,19 +767,6 @@
    
   </div>
 </section>
-
-  <section id="reserve" class="reserve-section">
-    <div class="container">
-      <h2 class="section-title">ご予約</h2>
-      <p class="section-lead">下記ボタンより予約ページへお進みください</p>
-
-  
-    
-          <a class="btn2" href="https://airrsv.net/briobb/calendar" target="_blank">予約はこちら</a>
-       
-
-    </div>
-  </section>
 
   <section id="info" class="shop-info">
     <div class="container">
