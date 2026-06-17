@@ -1,1 +1,670 @@
-test
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRIO｜古民家で味わうクラフトバーガー</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: #2b1b1b;
+      background: #fff7f3;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 247, 243, 0.95);
+      border-bottom: 1px solid #f0c8c0;
+    }
+
+    .header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      color: #b71922;
+    }
+
+    .menu-btn {
+      width: 42px;
+      height: 34px;
+      border: none;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .menu-btn span {
+      display: block;
+      height: 3px;
+      background: #b71922;
+      border-radius: 3px;
+      transition: 0.25s;
+    }
+
+    .menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .desktop-nav ul {
+      list-style: none;
+    }
+
+    .desktop-nav li {
+      border-bottom: 1px solid #f0c8c0;
+    }
+
+    .desktop-nav a {
+      display: block;
+      padding: 14px 22px;
+      font-weight: 800;
+      color: #2b1b1b;
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+      z-index: 998;
+    }
+
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(320px, 80vw);
+      height: 100%;
+      background: #fff;
+      padding: 22px;
+      transition: .25s;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-left: 1px solid #f0c8c0;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .close-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #f0c8c0;
+      color: #b71922;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #b71922;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px;
+      border: 1px solid #f0c8c0;
+      border-radius: 14px;
+      font-weight: 800;
+      color: #2b1b1b;
+      background: #fff7f3;
+    }
+
+    main {
+      padding-top: 64px;
+    }
+
+    section {
+      padding: 70px 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .top-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      padding: 0;
+      background: #b71922;
+    }
+
+    .top-slide {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: cover;
+      opacity: 0;
+      animation: topFade 18s infinite;
+    }
+
+    .top-slide.slide1 {
+      background-image: url("images/photo01.jpg");
+      animation-delay: 0s;
+    }
+
+    .top-slide.slide2 {
+      background-image: url("images/photo02.jpg");
+      animation-delay: 6s;
+    }
+
+    .top-slide.slide3 {
+      background-image: url("images/photo03.jpg");
+      animation-delay: 12s;
+    }
+
+    @keyframes topFade {
+      0% { opacity: 0; }
+      8% { opacity: 1; }
+      30% { opacity: 1; }
+      38% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(255,247,243,0.78), rgba(255,247,243,0.96)),
+        url("images/hero.jpg") center/cover no-repeat;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      line-height: 1.35;
+      margin-bottom: 20px;
+      color: #b71922;
+    }
+
+    .hero p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .btn-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn {
+      display: block;
+      padding: 15px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      text-align: center;
+      border: 2px solid #b71922;
+      background: #b71922;
+      color: #fff;
+    }
+
+    .btn.sub {
+      background: #fff;
+      color: #b71922;
+    }
+
+    .section-title {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 18px;
+      letter-spacing: 0.08em;
+      color: #b71922;
+    }
+
+    .section-lead {
+      text-align: center;
+      margin-bottom: 36px;
+      color: #6f4c4c;
+    }
+
+    .cards {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #f0c8c0;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(120, 20, 20, 0.07);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #b71922;
+    }
+
+    #menu {
+      background: #b71922;
+    }
+
+    #menu .section-title {
+      color: #fff;
+    }
+
+    #menu .section-lead {
+      color: #ffe2dc;
+    }
+
+    #menu .card {
+      background: #fff7f3;
+      color: #2b1b1b;
+      border: 1px solid #ffd8d0;
+    }
+
+    .flow {
+      counter-reset: step;
+      display: grid;
+      gap: 18px;
+    }
+
+    .flow-item {
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px 24px 24px 70px;
+      border: 1px solid #f0c8c0;
+    }
+
+    .flow-item::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 22px;
+      top: 24px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #b71922;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .cta {
+      background: #b71922;
+      color: #fff;
+      text-align: center;
+    }
+
+    .cta .section-title {
+      color: #fff;
+    }
+
+    .cta .section-lead {
+      color: #ffe2dc;
+    }
+
+    .cta .btn {
+      background: #fff;
+      color: #b71922;
+      border-color: #fff;
+    }
+
+    .contact-box {
+      background: #fff;
+      border-radius: 22px;
+      padding: 24px;
+      border: 1px solid #f0c8c0;
+    }
+
+    .shop-info {
+      background: #fff0ec;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      background: #fff;
+      border: 1px solid #f0c8c0;
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .info-list dt {
+      font-weight: 900;
+      color: #b71922;
+    }
+
+    .info-list dd {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      background: #2b1b1b;
+      color: #fff;
+      font-size: 13px;
+    }
+
+    @media (min-width: 768px) {
+      .menu-btn {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: block;
+      }
+
+      .desktop-nav ul {
+        display: flex;
+        gap: 18px;
+      }
+
+      .desktop-nav li {
+        border: none;
+      }
+
+      .desktop-nav a {
+        padding: 0;
+        font-size: 14px;
+      }
+
+      .mobile-menu,
+      .mobile-menu-overlay {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .btn-wrap {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#top" class="logo">BRIO</a>
+
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="メニューを開く" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="desktop-nav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#concept">コンセプト</a></li>
+        <li><a href="#menu">メニュー</a></li>
+        <li><a href="#space">空間</a></li>
+        <li><a href="#info">店舗情報</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
+<aside class="mobile-menu" id="mobileMenu" aria-label="スマホメニュー">
+  <div class="close-row">
+    <strong>BRIO</strong>
+    <button class="close-btn" type="button" aria-label="閉じる" onclick="closeMenu()">✕</button>
+  </div>
+
+  <a href="#concept" onclick="closeMenu()">コンセプト</a>
+  <a href="#menu" onclick="closeMenu()">メニュー</a>
+  <a href="#space" onclick="closeMenu()">空間</a>
+  <a href="#info" onclick="closeMenu()">店舗情報</a>
+  <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
+</aside>
+
+<main id="top">
+
+  <section class="top-slider" aria-label="BRIO イメージ写真">
+    <div class="top-slide slide1"></div>
+    <div class="top-slide slide2"></div>
+    <div class="top-slide slide3"></div>
+  </section>
+
+  <section class="hero">
+    <div class="container">
+      <h1>田舎時間で味わう、<br>特別なハンバーガー。</h1>
+      <p>
+        鹿児島県産黒毛和牛を使用した100%ビーフパティ。<br>
+        築70年の古民家で、ゆったりとした時間をお楽しみください。
+      </p>
+      <div class="btn-wrap">
+        <a class="btn" href="#menu">メニューを見る</a>
+        <a class="btn sub" href="#info">店舗情報を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="concept">
+    <div class="container">
+      <h2 class="section-title">CONCEPT</h2>
+      <p class="section-lead">食事だけではなく、過ごす時間そのものを楽しむ場所。</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>100% BEEF PATTY</h3>
+          <p>鹿児島県産黒毛和牛を使用した、肉の旨みをしっかり感じるビーフパティ。</p>
+        </div>
+        <div class="card">
+          <h3>OLD HOUSE</h3>
+          <p>築70年の古民家をリノベーションした、落ち着きのある特別な空間。</p>
+        </div>
+        <div class="card">
+          <h3>THIRD PLACE</h3>
+          <p>家でも職場でもない、家族や友人とゆっくり過ごせるサードプレイス。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="cta">
+    <div class="container">
+      <h2 class="section-title">MENU</h2>
+      <p class="section-lead">BRIOらしさを詰め込んだクラフトバーガー。</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Brio Burger</h3>
+          <p>特製ミートソースを合わせた、BRIOの看板バーガー。</p>
+        </div>
+        <div class="card">
+          <h3>The Cheese</h3>
+          <p>王道を超えた、真のクラシック。チーズ好きにおすすめの一品。</p>
+        </div>
+        <div class="card">
+          <h3>All Star</h3>
+          <p>ベーコン、チーズ、エッグを重ねた、満足感のある人気メニュー。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="space">
+    <div class="container">
+      <h2 class="section-title">SPACE</h2>
+      <p class="section-lead">ゆっくり流れる時間を楽しむ、古民家リノベーション空間。</p>
+
+      <div class="flow">
+        <div class="flow-item">
+          <h3>到着</h3>
+          <p>田舎の風景を感じながら、日常から少し離れる時間へ。</p>
+        </div>
+        <div class="flow-item">
+          <h3>注文</h3>
+          <p>こだわりのバーガーとドリンクを選び、出来上がりを待つ楽しみを。</p>
+        </div>
+        <div class="flow-item">
+          <h3>食事</h3>
+          <p>肉の旨みと手作り感を、落ち着いた空間でゆっくり味わう。</p>
+        </div>
+        <div class="flow-item">
+          <h3>余韻</h3>
+          <p>食後も少し長居したくなる、BRIOらしい特別な時間。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" class="shop-info">
+    <div class="container">
+      <h2 class="section-title">SHOP INFO</h2>
+      <p class="section-lead">店舗情報は必要に応じて変更してください。</p>
+
+      <dl class="info-list">
+        <dt>店名</dt>
+        <dd>BRIO</dd>
+
+        <dt>住所</dt>
+        <dd>大阪府河内長野市高向977-2</dd>
+
+        <dt>営業時間</dt>
+        <dd>土日 10:00 - 16:00</dd>
+
+        <dt>Instagram</dt>
+        <dd><a href="#" target="_blank" rel="noopener">Instagramはこちら</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">CONTACT</h2>
+      <div class="contact-box">
+        <p>
+          お問い合わせ、イベント出店、貸切などのご相談はInstagramのDMよりお願いいたします。
+        </p>
+        <p>
+          最新の営業情報や限定メニューもInstagramでお知らせします。
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; BRIO. All Rights Reserved.</p>
+</footer>
+
+<script>
+  const menu = document.getElementById("mobileMenu");
+  const overlay = document.getElementById("menuOverlay");
+  const menuBtn = document.getElementById("menuBtn");
+
+  function openMenu() {
+    menu.classList.add("active");
+    overlay.classList.add("active");
+    menuBtn.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+    menuBtn.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  function toggleMenu() {
+    if (menu.classList.contains("active")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+</script>
+
+</body>
+</html>
