@@ -459,6 +459,13 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    .info-list iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 320px;
+        border-radius: 16px;
+    }
   </style>
 </head>
 
@@ -476,11 +483,11 @@
 
     <nav class="desktop-nav" aria-label="メインメニュー">
       <ul>
-        <li><a href="#concept">コンセプト</a></li>
-        <li><a href="#menu">メニュー</a></li>
-        <li><a href="#space">空間</a></li>
-        <li><a href="#info">店舗情報</a></li>
-        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a href="#top">トップ</a></li>
+        <li><a href="#menu">こだわり</a></li>
+        <li><a href="#reserve">ご予約</a></li>
+        <li><a href="#info">アクセス</a></li>
+        <li><a href="#link">LINK</a></li>
       </ul>
     </nav>
   </div>
@@ -494,11 +501,11 @@
     <button class="close-btn" type="button" aria-label="閉じる" onclick="closeMenu()">✕</button>
   </div>
 
-  <a href="#concept" onclick="closeMenu()">コンセプト</a>
-  <a href="#menu" onclick="closeMenu()">メニュー</a>
-  <a href="#space" onclick="closeMenu()">空間</a>
-  <a href="#info" onclick="closeMenu()">店舗情報</a>
-  <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
+  <a href="#top" onclick="closeMenu()">トップ</a>
+  <a href="#menu" onclick="closeMenu()">こだわり</a>
+  <a href="#reserve" onclick="closeMenu()">ご予約</a>
+  <a href="#info" onclick="closeMenu()">アクセス</a>
+  <a href="#link" onclick="closeMenu()">LINK</a>
 </aside>
 
 <main id="top">
@@ -513,117 +520,95 @@
     <div class="container">
       <h1>田舎時間で味わう、<br>特別なハンバーガー。</h1>
       <p>
-        鹿児島県産黒毛和牛を使用した100%ビーフパティ。<br>
-        築70年の古民家で、ゆったりとした時間をお楽しみください。
+        鹿児島県産黒毛和牛を使用した<br>100%ビーフパティ。<br>
+        築70年の古民家で、ゆったりとした<br>時間をお楽しみください。
       </p>
       <div class="btn-wrap">
-        <a class="btn" href="#menu">メニューを見る</a>
-        <a class="btn sub" href="#info">店舗情報を見る</a>
+        <a class="btn" href="#reserve">予約はこちら</a>
+        <a class="btn sub" href="#info">アクセスマップを見る</a>
       </div>
     </div>
   </section>
 
-  <section id="concept">
-    <div class="container">
-      <h2 class="section-title">CONCEPT</h2>
-      <p class="section-lead">食事だけではなく、過ごす時間そのものを楽しむ場所。</p>
-
-      <div class="cards">
-        <div class="card">
-          <h3>100% BEEF PATTY</h3>
-          <p>鹿児島県産黒毛和牛を使用した、肉の旨みをしっかり感じるビーフパティ。</p>
-        </div>
-        <div class="card">
-          <h3>OLD HOUSE</h3>
-          <p>築70年の古民家をリノベーションした、落ち着きのある特別な空間。</p>
-        </div>
-        <div class="card">
-          <h3>THIRD PLACE</h3>
-          <p>家でも職場でもない、家族や友人とゆっくり過ごせるサードプレイス。</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="menu" class="cta">
     <div class="container">
-      <h2 class="section-title">MENU</h2>
+      <h2 class="section-title">当店のこだわり</h2>
       <p class="section-lead">BRIOらしさを詰め込んだクラフトバーガー。</p>
 
       <div class="cards">
         <div class="card">
-          <h3>Brio Burger</h3>
-          <p>特製ミートソースを合わせた、BRIOの看板バーガー。</p>
+          <h3>パティ</h3>
+          <p>鹿児島県産黒毛和牛を使用した、<br>肉の旨みをしっかり感じるビーフパティ。</p>
         </div>
         <div class="card">
-          <h3>The Cheese</h3>
-          <p>王道を超えた、真のクラシック。チーズ好きにおすすめの一品。</p>
+          <h3>バンズ</h3>
+          <p>地元の名店”たいちろうのぱん”の<br>特注バンズを使用。</p>
         </div>
         <div class="card">
-          <h3>All Star</h3>
-          <p>ベーコン、チーズ、エッグを重ねた、満足感のある人気メニュー。</p>
+          <h3>ソース</h3>
+          <p>何度でも食べたくなる。<br>特性ミートソース。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="space">
+  <section id="reserve">
     <div class="container">
-      <h2 class="section-title">SPACE</h2>
-      <p class="section-lead">ゆっくり流れる時間を楽しむ、古民家リノベーション空間。</p>
+      <h2 class="section-title">ご予約</h2>
+      <p class="section-lead">下記ボタンより予約ページへお進みください</p>
 
-      <div class="flow">
-        <div class="flow-item">
-          <h3>到着</h3>
-          <p>田舎の風景を感じながら、日常から少し離れる時間へ。</p>
-        </div>
-        <div class="flow-item">
-          <h3>注文</h3>
-          <p>こだわりのバーガーとドリンクを選び、出来上がりを待つ楽しみを。</p>
-        </div>
-        <div class="flow-item">
-          <h3>食事</h3>
-          <p>肉の旨みと手作り感を、落ち着いた空間でゆっくり味わう。</p>
-        </div>
-        <div class="flow-item">
-          <h3>余韻</h3>
-          <p>食後も少し長居したくなる、BRIOらしい特別な時間。</p>
-        </div>
-      </div>
+  
+    
+          <a class="btn" href="https://airrsv.net/briobb/calendar" target="_blank">予約はこちら</a>
+       
+
     </div>
   </section>
 
   <section id="info" class="shop-info">
     <div class="container">
-      <h2 class="section-title">SHOP INFO</h2>
-      <p class="section-lead">店舗情報は必要に応じて変更してください。</p>
+      <h2 class="section-title">アクセス</h2>
 
       <dl class="info-list">
-        <dt>店名</dt>
-        <dd>BRIO</dd>
+
+         <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.08574038075!2d135.5549623!3d34.4413663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000d5006fc12129%3A0xf01fdc044156dd6f!2sBrio%20burger%20%26%20bicycle!5e1!3m2!1sja!2sjp!4v1781663241572!5m2!1sja!2sjp"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
 
         <dt>住所</dt>
         <dd>大阪府河内長野市高向977-2</dd>
 
-        <dt>営業時間</dt>
-        <dd>土日 10:00 - 16:00</dd>
+        <dt>TEL</dt>
+        <dd>070-4206-5410</dd>
 
-        <dt>Instagram</dt>
-        <dd><a href="#" target="_blank" rel="noopener">Instagramはこちら</a></dd>
+        <dt>営業時間</dt>
+        <dd>平日 11:00 - 16:00(lo15:30)</dd>
+        <dd>土日 10:00 - 19:00(lo18:00)</dd>
+        <dd>金曜定休日</dd>
+       
       </dl>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="link">
     <div class="container">
-      <h2 class="section-title">CONTACT</h2>
+      <h2 class="section-title">LINK</h2>
       <div class="contact-box">
-        <p>
-          お問い合わせ、イベント出店、貸切などのご相談はInstagramのDMよりお願いいたします。
-        </p>
-        <p>
-          最新の営業情報や限定メニューもInstagramでお知らせします。
-        </p>
+        
+
+  
+    
+          <a class="btn" href="https://www.instagram.com/brio_burger_bicycle/" target="_blank">インスタグラム</a>
+          <br>
+          <a class="btn" href="https://briobb.base.shop/" target="_blank">オリジナルグッズ</a>
+          
+       
       </div>
     </div>
   </section>
